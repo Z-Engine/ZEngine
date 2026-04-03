@@ -12,6 +12,11 @@ namespace ZEngine.Source.Objects
 {
     internal class Camera
     {
+        // Public Variables
+        public int Width => target.Width;
+        public int Height => target.Height;
+
+        // Private Variables
         private readonly RenderTarget2D target;
         private readonly GraphicsDevice graphicsDevice;
         private Rectangle destRect;

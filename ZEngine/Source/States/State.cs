@@ -31,28 +31,48 @@ namespace ZEngine.Source.States
         // State variables
         public KeyboardState keyboard, previousKeyboard;
         public MouseState mouse, previousMouse;
+        public Vector2 mouseDelta;
+        protected float MAXDELTA = Global.mouseDeltaMax;
+
         public int screenWidth, screenHeight;
         public Camera cam;
+
+        public Cursor cursor;
+        public bool cursorVisible;
+
+        // Pausing
+        public bool canPause = true;
 
         public State()
         {
             // Set Camera
             cam = new Camera(this.graphicsDevice, Global.windowWidth, Global.windowHeight);
+
+            // Set Cursor
+            cursor = new Cursor(Global.cursorSize);
+            cursorVisible = true;
         }
 
         public void Update(GameTime gameTime)
         {
             // Update state variables
-            screenWidth = graphicsDevice.Viewport.Width;
-            screenHeight = graphicsDevice.Viewport.Height;
+            screenWidth = graphicsDevice.PresentationParameters.Bounds.Width;
+            screenHeight = graphicsDevice.PresentationParameters.Bounds.Height;
 
-            // Controls
+            // Set Controls
             keyboard = Keyboard.GetState();
+            mouse = Mouse.GetState();
 
             // Override Update
             OnUpdate(gameTime);
 
+            // Update Controls
+
+            // Mouse Delta
+            mouseDelta = new Vector2(Math.Min(MAXDELTA, (previousMouse.X - mouse.X)), Math.Min(MAXDELTA, (previousMouse.Y - mouse.Y)));
+
             previousKeyboard = keyboard;
+            previousMouse = mouse;
         }
 
         public virtual void OnUpdate(GameTime gameTime)
@@ -62,6 +82,17 @@ namespace ZEngine.Source.States
         public void Draw(SpriteBatch spriteBatch)
         {
             OnDraw(spriteBatch);
+
+            // Draw Global State Objects
+
+            // Cursor
+            if (!Global.mouseVisible) // If mouse is not visible
+            {
+                if (cursorVisible) // If cursor can be seen
+                {
+                    cursor.Draw(spriteBatch);
+                }
+            }
         }
 
         /// <summary>
@@ -86,6 +117,15 @@ namespace ZEngine.Source.States
         public bool KeyDown(Keys key)
         {
             if (keyboard.IsKeyDown(key))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public bool MouseMoved()
+        {
+            if (mouseDelta.X != 0 || mouseDelta.Y != 0)
             {
                 return true;
             }

@@ -88,10 +88,21 @@ namespace ZEngine
             ChangeWindowSize(Global.windowWidth, Global.windowHeight);
         }
 
+        // Update Global Variables
+        private void UpdateGlobal()
+        {
+            IsMouseVisible = Global.mouseVisible;
+        }
+
         protected override void Update(GameTime gameTime)
         {
+            /*
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            */
+
+            // Update game variables
+            UpdateGlobal();
 
             // Update public game time
             MainGame.gameTime = gameTime;

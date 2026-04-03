@@ -38,3 +38,4 @@ C:\Users\CJMT\Documents\GitHub\ZEngine\ZEngine\obj\Debug\net8.0-windows10.0.2610
 C:\Users\CJMT\Documents\GitHub\ZEngine\ZEngine\obj\Debug\net8.0-windows10.0.26100.0\ZEngine.pdb
 C:\Users\CJMT\Documents\GitHub\ZEngine\ZEngine\obj\Debug\net8.0-windows10.0.26100.0\ZEngine.genruntimeconfig.cache
 C:\Users\CJMT\Documents\GitHub\ZEngine\ZEngine\obj\Debug\net8.0-windows10.0.26100.0\ref\ZEngine.dll
+C:\Users\CJMT\Documents\GitHub\ZEngine\ZEngine\bin\Debug\net8.0-windows10.0.26100.0\Content\Assets\Images\Cursor.xnb

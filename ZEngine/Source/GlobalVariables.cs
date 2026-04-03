@@ -20,9 +20,31 @@ namespace ZEngine.Source
             windowWidth = 844,
             windowHeight = 480;
 
+        public static bool active = true;
+
         // Settings
 
-        public static bool renderInactive = true;
+        // When Inactive
+        public static bool
+            renderInactive = true,
+            pauseWhenInactive = true;
+
+        // Mouse
+        public static float
+            mouseDeltaMax = 6,
+            mouseSensitivity = 0.1f;
+
+        // Game
+
+        public static string gameVersion = "0.0.0";
+
+        public static bool
+            paused = false,
+            mouseVisible = false;
+
+        // Cursor Size
+        public static int cursorPixels = 30; // Int (to be used for Width and Height)
+        public static Point cursorSize = new Point(cursorPixels, cursorPixels); // Point
 
         // Graphics
 
@@ -30,7 +52,10 @@ namespace ZEngine.Source
 
         // Sprites
 
-        public static Texture2D noImg, gio;
+        public static Texture2D
+            noImg,
+            cursor, cursorHighlight,
+            gio;
         public static SpriteFont arial;
         public static Effect crt;
 
@@ -40,6 +65,8 @@ namespace ZEngine.Source
             // Images
 
             Global.noImg = content.Load<Texture2D>("Assets/Images/pixel");
+
+            Global.cursor = content.Load<Texture2D>("Assets/Images/Cursor");
 
             Global.gio = content.Load<Texture2D>("Assets/Images/Giovanni");
 
