@@ -1,3 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Build
 /ZEngine/bin
+/ZEngine/obj
+/ZEngine/Content/bin
+/ZEngine/Content/obj
+
+# Visual Studio
+.vs/
